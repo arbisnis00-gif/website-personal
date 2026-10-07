@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .kalkulator {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 15px;
+            width: 280px;
+        }
+
+        #layar {
+            width: 100%;
+            height: 60px;
+            font-size: 28px;
+            text-align: right;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .tombol {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 55px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .operator {
+            background-color: orange;
+        }
+
+        .sama-dengan {
+            background-color: limegreen;
+        }
+
+        .hapus {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="kalkulator">
+        <input type="text" id="layar" disabled>
+
+        <div class="tombol">
+            <button class="hapus" onclick="hapus()">C</button>
+            <button onclick="tambahLayar('/')">÷</button>
+            <button onclick="tambahLayar('*')">×</button>
+            <button class="operator" onclick="tambahLayar('-')">−</button>
+
+            <button onclick="tambahLayar('7')">7</button>
+            <button onclick="tambahLayar('8')">8</button>
+            <button onclick="tambahLayar('9')">9</button>
+            <button class="operator" onclick="tambahLayar('+')">+</button>
+
+            <button onclick="tambahLayar('4')">4</button>
+            <button onclick="tambahLayar('5')">5</button>
+            <button onclick="tambahLayar('6')">6</button>
+            <button onclick="tambahLayar('.')">.</button>
+
+            <button onclick="tambahLayar('1')">1</button>
+            <button onclick="tambahLayar('2')">2</button>
+            <button onclick="tambahLayar('3')">3</button>
+            <button class="sama-dengan" onclick="hitung()">=</button>
+
+            <button onclick="tambahLayar('0')" style="grid-column: span 2;">0</button>
+        </div>
+    </div>
+
+    <script>
+        function tambahLayar(nilai) {
+            document.getElementById("layar").value += nilai;
+        }
+
+        function hapus() {
+            document.getElementById("layar").value = "";
+        }
+
+        function hitung() {
+            try {
+                document.getElementById("layar").value =
+                    eval(document.getElementById("layar").value);
+            } catch {
+                document.getElementById("layar").value = "Error";
+            }
+        }
+    </script>
+
+</body>
+</html>
